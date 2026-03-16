@@ -23,13 +23,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install ".[dev]"
-      - name: Linting and Format Checks
+      - name: Linting Checks
         run: |
           ruff check .
+      - name: Format Checks
+        run: |
           black --check .
       - name: Static type checks
         run: |
-          mypy src\
+          mypy src/
       - name: Security checks
         run: |
           bandit -c pyproject.toml -r .
