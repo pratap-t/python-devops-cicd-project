@@ -4,8 +4,11 @@ from pytest_mock import MockerFixture
 
 from simple_http_checker.checker import check_urls
 
+
 def test_check_urls_success(mocker: MockerFixture):
-    mock_requests_get = mocker.patch("simple_http_checker.checker.requests.get")
+    mock_requests_get = mocker.patch(
+        "simple_http_checker.checker.requests.get"
+    )
 
     mock_response = mocker.MagicMock(spec=requests.Response)
     mock_response.status_code = 200
@@ -19,8 +22,11 @@ def test_check_urls_success(mocker: MockerFixture):
     mock_requests_get.assert_called_once_with(urls[0], timeout=5)
     assert results[urls[0]] == "200 OK"
 
+
 def test_check_urls_client_error(mocker: MockerFixture):
-    mock_requests_get = mocker.patch("simple_http_checker.checker.requests.get")
+    mock_requests_get = mocker.patch(
+        "simple_http_checker.checker.requests.get"
+    )
 
     mock_response = mocker.MagicMock(spec=requests.Response)
     mock_response.status_code = 404
@@ -33,6 +39,7 @@ def test_check_urls_client_error(mocker: MockerFixture):
 
     mock_requests_get.assert_called_once_with(urls[0], timeout=5)
     assert results[urls[0]] == "404 Not Found"
+
 
 # @pytest.mark.parametrize(
 #     "error_exception, expected_status",
