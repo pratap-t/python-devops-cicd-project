@@ -1,2 +1,12 @@
-# python-devops-cicd-project
+# Python for DevOps: CI/CD for Python Project
 This repo contains the code for the CICD section for project click cli
+
+# What we implement in this repository
+
+[x] Implement the project (code files)
+[] Add a simple GHA workflow and make sure it runs until completion
+[] Add linting and format checks
+[] Add typing and security checks
+[] Add test automation
+[] Build your Python project
+[] Publish the project to both TestPyPI and PyPi when a new tag is pushed
