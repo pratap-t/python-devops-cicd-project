@@ -1,32 +1,32 @@
 # from asyncio import timeout
 # from email.policy import default
 from simple_http_checker.checker import check_urls
+
 # from tabnanny import verbose
 from typing import Collection
 import click
 import logging
 
-
 logging.basicConfig(
     level=logging.INFO,
     format="[%(asctime)s] %(levelname)-8s %(name)s: %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S"
+    datefmt="%Y-%m-%d %H:%M:%S",
 )
 
 logger = logging.getLogger(__name__)
+
 
 @click.command()
 @click.argument("urls", nargs=-1)
 @click.option(
     "--timeout",
-              default=5,
-              help="Timeout in seconds for each requests."
+    default=5,
+    help="Timeout in seconds for each requests.",
 )
 @click.option(
     "--verbose", "-v", is_flag=True, help="Enable debug logging."
 )
-
-def main(urls, timeout, verbose):
+def main(urls: Collection[str], timeout: int, verbose: bool):
     if verbose:
         logging.getLogger().setLevel(logging.DEBUG)
         logger.debug("Verbose logging enabled")
